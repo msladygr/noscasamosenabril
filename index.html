@@ -29,19 +29,9 @@
             color: var(--dark-color);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        /* FONDO ANIMADO INMERSIVO EN MOVIMIENTO FLUIDO */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -999;
             background: linear-gradient(-45deg, #F4F1EA, #E6E0D5, #D8E2DC, #EBE3D5);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 12s ease infinite;
         }
 
         @keyframes gradientBG {
@@ -101,7 +91,7 @@
             margin-bottom: 30px;
         }
 
-        /* Reproductor tipo Spotify Flotante */
+        /* Reproductor estilo Spotify con Botón Atrás y Adelante */
         .spotify-player {
             position: fixed;
             bottom: 20px;
@@ -124,7 +114,7 @@
         .spotify-info {
             display: flex;
             flex-direction: column;
-            max-width: 140px;
+            max-width: 130px;
         }
         .spotify-title {
             font-size: 0.75rem;
@@ -148,7 +138,7 @@
             border: none;
             cursor: pointer;
             color: var(--accent-green);
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: transform 0.2s;
         }
         .spotify-controls button:hover {
@@ -259,6 +249,34 @@
             margin: 0 auto 30px auto;
         }
 
+        /* Enlaces de redes y web del salón */
+        .venue-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .venue-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(61, 79, 65, 0.1);
+            color: var(--accent-green);
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(61, 79, 65, 0.2);
+        }
+        .venue-btn:hover {
+            background-color: var(--accent-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
         /* Animaciones al hacer Scroll */
         .reveal {
             opacity: 0;
@@ -307,7 +325,7 @@
             text-decoration: none;
             font-weight: 500;
             letter-spacing: 1px;
-            transition: all 1s ease;
+            transition: all 0.3s ease;
             margin-top: 15px;
             border: none;
             cursor: pointer;
@@ -320,7 +338,7 @@
             box-shadow: 0 8px 25px rgba(61, 79, 65, 0.4);
         }
 
-        /* Galería Dinámica (Generada por JavaScript) */
+        /* Galería Dinámica */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -436,9 +454,6 @@
 </head>
 <body>
 
-    <!-- FONDO ANIMADO INMERSIVO -->
-    <div class="animated-bg"></div>
-
     <!-- PANTALLA DE BIENVENIDA / SPLASH SCREEN -->
     <div id="welcome-screen">
         <h1 style="font-family: 'Cormorant Garamond', serif;">Yeri & Fati</h1>
@@ -446,13 +461,14 @@
         <button class="btn" id="enterBtn" style="font-size: 1rem; padding: 14px 36px; background-color: rgba(255,255,255,0.25); border: 1px solid white; backdrop-filter: blur(5px);">Abrir Invitación ✨</button>
     </div>
 
-    <!-- REPRODUCTOR MÚLTIPLE TIPO SPOTIFY -->
+    <!-- REPRODUCTOR ESTILO SPOTIFY CON ANTERIOR Y SIGUIENTE -->
     <div class="spotify-player" id="spotifyPlayer">
         <div class="spotify-info">
-            <span class="spotify-title" id="songTitle">La Boda</span>
-            <span class="spotify-artist" id="songArtist">Camilo</span>
+            <span class="spotify-title" id="songTitle">Tenderness</span>
+            <span class="spotify-artist" id="songArtist">Bensound</span>
         </div>
         <div class="spotify-controls">
+            <button id="prevBtn" title="Canción anterior"><i class="fa-solid fa-backward-step"></i></button>
             <button id="playPauseBtn" title="Reproducir / Pausar"><i class="fa-solid fa-play" id="playIcon"></i></button>
             <button id="nextBtn" title="Siguiente canción"><i class="fa-solid fa-forward-step"></i></button>
         </div>
@@ -472,14 +488,20 @@
         </div>
     </div>
 
-    <!-- UBICACIÓN Y FECHA -->
+    <!-- UBICACIÓN Y FECHA (Con Web e Instagram de Anayansi) -->
     <section class="reveal">
         <div class="content-card">
             <h2>El Gran Día</h2>
             <div class="divider"></div>
             <p style="font-size: 1.3rem; margin-bottom: 10px;"><strong>1 de Abril de 2027</strong></p>
-            <p style="font-size: 1.1rem; margin-bottom: 25px;"><strong>Anayansi Eventos</strong> — Maestro Ángel D'Elía 310, Muñiz</p>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;"><strong>Anayansi Eventos</strong> — Maestro Ángel D'Elía 310, Muñiz</p>
+            
             <a href="https://maps.google.com/?q=Maestro+Angel+D+Elia+310+Muniz" target="_blank" class="btn"><i class="fa-solid fa-map-location-dot"></i> Ver ubicación en Google Maps</a>
+            
+            <div class="venue-links">
+                <a href="https://www.instagram.com/anayansieventos" target="_blank" class="venue-btn"><i class="fa-brands fa-instagram"></i> Instagram del Salón</a>
+                <a href="https://www.anayansieventos.com.ar" target="_blank" class="venue-btn"><i class="fa-solid fa-globe"></i> Sitio Web Oficial</a>
+            </div>
         </div>
     </section>
 
@@ -488,7 +510,6 @@
         <div class="content-card">
             <h2>Momentos Juntas</h2>
             <div class="divider"></div>
-            <!-- La galería se llena sola mediante el script de abajo -->
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </section>
@@ -597,16 +618,11 @@
 
     <!-- SCRIPTS -->
     <script>
-        // ==========================================
-        // GALERÍA DINÁMICA: 
-        // Cada vez que subas una foto nueva a GitHub, 
-        // solo agregás el nombre del archivo en esta lista:
-        // ==========================================
+        // Galería dinámica (Agregá nuevos nombres de archivos acá cuando subas fotos)
         const misFotos = [
             "20250823_182139.jpg",
             "20250823_182422.jpg",
             "20250823_161010.jpg"
-            // Ej: "nueva-foto.jpg" (¡solo agregala acá cuando la subas!)
         ];
 
         const galleryGrid = document.getElementById('galleryGrid');
@@ -617,11 +633,11 @@
             galleryGrid.appendChild(item);
         });
 
-        // Reproductor tipo Spotify
+        // Playlist de reproducción múltiple (Atrás / Siguiente)
         const playlist = [
-            { title: "La Boda", artist: "Camilo", src: "https://www.bensound.com/bensound-music/bensound-tenderness.mp3" },
-            { title: "Risk It All", artist: "Bruno Mars", src: "https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" },
-            { title: "At Last", artist: "Etta James", src: "https://www.bensound.com/bensound-music/bensound-love.mp3" }
+            { title: "Tenderness", artist: "Bensound Romántico", src: "https://www.bensound.com/bensound-music/bensound-tenderness.mp3" },
+            { title: "Creative Minds", artist: "Bensound Acústico", src: "https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" },
+            { title: "Love", artist: "Bensound Melodía", src: "https://www.bensound.com/bensound-music/bensound-love.mp3" }
         ];
 
         let currentSongIndex = 0;
@@ -630,6 +646,7 @@
         const songArtist = document.getElementById('songArtist');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
+        const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         let isPlaying = false;
 
@@ -643,10 +660,11 @@
 
         function togglePlay() {
             if (!isPlaying) {
-                bgAudio.play();
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                isPlaying = true;
+                bgAudio.play().then(() => {
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                    isPlaying = true;
+                }).catch(e => console.log("Audio play prevented", e));
             } else {
                 bgAudio.pause();
                 playIcon.classList.remove('fa-pause');
@@ -660,9 +678,13 @@
         nextBtn.addEventListener('click', () => {
             currentSongIndex = (currentSongIndex + 1) % playlist.length;
             loadSong(currentSongIndex);
-            if (isPlaying) {
-                bgAudio.play();
-            }
+            if (isPlaying) { bgAudio.play(); }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            loadSong(currentSongIndex);
+            if (isPlaying) { bgAudio.play(); }
         });
 
         bgAudio.addEventListener('ended', () => {
@@ -677,10 +699,11 @@
 
         enterBtn.addEventListener('click', () => {
             welcomeScreen.classList.add('hidden');
-            bgAudio.play();
-            playIcon.classList.remove('fa-play');
-            playIcon.classList.add('fa-pause');
-            isPlaying = true;
+            bgAudio.play().then(() => {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                isPlaying = true;
+            });
         });
 
         // Cuenta regresiva
